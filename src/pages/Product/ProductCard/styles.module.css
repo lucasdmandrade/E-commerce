@@ -1,0 +1,58 @@
+.hide {
+  display: none
+}
+
+.PopUp {
+  margin-top: -100px;
+}
+
+.paperProductContent {
+  min-height: 370px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 2.5em;
+  box-shadow: none;
+}
+
+.paperProductContent:current {
+  background-color: aqua;
+}
+
+.paperProductImg {
+}
+
+.paperProductTitle {
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 0.2em 0;
+
+}
+.paperProductPrice {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin: 0.2em 0;
+}
+
+.paperProductPriceDetails {
+  font-size: 0.9em;
+  font-weight: 300;
+  margin: 0.1em 0;
+}
+
+.paperFooterContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.paperChangeProductQuantityContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+.paperFooterInput {
+  text-align: center;
+}
