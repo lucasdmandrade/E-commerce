@@ -20,7 +20,6 @@ const Product = () => {
   const [productsQuantitySelected, setproductsQuantitySelected] = useState<
     number[]
   >([]);
-  const [totalValue, setTotalValue] = useState(0);
 
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -49,7 +48,6 @@ const Product = () => {
       totalValue += quantity * products[index].price;
     });
     console.log(totalValue);
-    setTotalValue(totalValue);
     dispatch(setAmount(totalValue));
   });
 
@@ -62,13 +60,8 @@ const Product = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(isProductPaperActive);
-    console.log(productsQuantitySelected);
-  }, [productsQuantitySelected, isProductPaperActive]);
-
   return (
-    <Container maxWidth="lg" style={{ padding: "1em" }}>
+    <Container maxWidth="lg">
       <h1 className={styles.conteinerTitler}>Produtos</h1>
       <Divider />
       <Grid container spacing={2}>

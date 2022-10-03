@@ -1,20 +1,38 @@
 import * as React from "react";
-import { Button, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { Box, Divider, TextField } from "@mui/material";
 import styles from "./styles.module.css";
 import { currencyBRL } from "../../../utils/CurrencyRegex";
+import { Link } from "react-router-dom";
+import { StyledButton } from "../../../Components/StyledButton";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { selectName, setName } from "../../../features/nameFeature/NameSlice";
+import { useEffect, useState } from "react";
 
 export interface IProps {
   totalValue: number;
 }
 
 const Footer = ({ totalValue }: IProps) => {
+  const [userName, setUserName] = useState("");
+  const dispatch = useAppDispatch();
+  const name = useAppSelector(selectName);
+
+  useEffect(() => {
+    console.log(name);
+  }, [name]);
+
+  useEffect(() => {
+    console.log(userName);
+    dispatch(setName(userName));
+  }, [userName]);
   return (
     <Box
       component="form"
       autoComplete="off"
       sx={{
         marginTop: "2em",
+        marginBottom: "2em",
       }}
     >
       <h1 className={styles.formsTitle}>Dados do Cliente</h1>
@@ -26,6 +44,7 @@ const Footer = ({ totalValue }: IProps) => {
         label="Nome"
         helperText="Incorrect entry."
         margin="normal"
+        onChange={(e) => setUserName(e.target.value)}
         sx={{
           m: 1,
         }}
@@ -81,11 +100,13 @@ const Footer = ({ totalValue }: IProps) => {
         }}
       >
         <h1 className={styles.formsTotalValue}>
-          Total: R$ {currencyBRL(totalValue)}{" "}
+          Total: {currencyBRL(totalValue)}{" "}
         </h1>
-        <Button variant="contained" color="primary" style={{ width: "28ch" }}>
-          Finalizar compra
-        </Button>
+        <Link to="/finalização-de-compra" style={{ textDecoration: "none" }}>
+          <StyledButton variant="contained" style={{ width: "28ch" }}>
+            Finalizar compra
+          </StyledButton>
+        </Link>
       </Container>
     </Box>
   );

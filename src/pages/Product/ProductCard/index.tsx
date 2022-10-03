@@ -24,8 +24,6 @@ const ProductCard = ({
   updateProductQuantityList,
   productsQuantitySelected,
 }: IProps) => {
-  console.log("teste", isProductPaperActive);
-  console.log("teste2", index);
   return (
     <Grid item xs={6} md={3} lg={3} sm={4}>
       <Paper
