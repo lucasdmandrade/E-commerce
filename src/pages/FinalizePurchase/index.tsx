@@ -10,7 +10,6 @@ import { selectName } from "../../features/nameFeature/NameSlice";
 const FinalizePurchase = () => {
   const count = useAppSelector(selectCount);
   const name = useAppSelector(selectName);
-  console.log(name);
 
   return (
     <Container

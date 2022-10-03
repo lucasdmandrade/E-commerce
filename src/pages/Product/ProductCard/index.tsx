@@ -79,8 +79,8 @@ const ProductCard = ({
                 size="small"
                 value={productsQuantitySelected[index]}
                 sx={{ textAlign: "center" }}
-                onChange={(e) =>
-                  updateProductQuantityList(index, Number(e.target.value))
+                onChange={({ target }) =>
+                  updateProductQuantityList(index, Number(target.value))
                 }
                 disabled
               />

@@ -35,10 +35,8 @@ const Product = () => {
 
   const updateProductQuantityList = (index: number, newQuantity: number) => {
     if (newQuantity < 0) return;
-    console.log(newQuantity);
     let prodctQuantityArray: number[] = productsQuantitySelected;
     prodctQuantityArray[index] = newQuantity;
-    console.log(prodctQuantityArray);
     setproductsQuantitySelected(prodctQuantityArray);
   };
 
@@ -47,7 +45,6 @@ const Product = () => {
     productsQuantitySelected.find((quantity, index) => {
       totalValue += quantity * products[index].price;
     });
-    console.log(totalValue);
     dispatch(setAmount(totalValue));
   });
 
