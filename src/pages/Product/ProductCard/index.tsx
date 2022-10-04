@@ -31,7 +31,11 @@ const ProductCard = ({
       <Paper
         elevation={0}
         className={styles.paperProductContent}
-        onClick={() => updateActivePaper(index)}
+        onClick={
+          !isProductPaperActive[index]
+            ? () => updateActivePaper(index)
+            : () => {}
+        }
       >
         <img
           className={styles.paperImg}
@@ -108,8 +112,9 @@ const ProductCard = ({
               variant="contained"
               color="primary"
               style={{ marginTop: "10px", width: "100%" }}
+              onClick={() => updateActivePaper(undefined)}
             >
-              Adicionar
+              Fechar
             </Button>
           </Box>
         </div>
