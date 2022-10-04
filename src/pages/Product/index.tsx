@@ -7,11 +7,8 @@ import { IProducts } from "./populateProducts/types";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import ProductCard from "./ProductCard";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  selectCount,
-  setAmount,
-} from "../../features/totalValueCounter/CounterSlice";
+import { useAppSelector } from "../../app/hooks";
+import { selectCount } from "../../features/totalValueCounter/CounterSlice";
 
 const Product = () => {
   const [isProductPaperActive, setIsProductPaperActive] = useState<boolean[]>(
@@ -22,7 +19,6 @@ const Product = () => {
   >([]);
 
   const count = useAppSelector(selectCount);
-  const dispatch = useAppDispatch();
 
   const updateActivePaper = (index?: number) => {
     let prodctActiveArray: boolean[] = [];
@@ -39,14 +35,6 @@ const Product = () => {
     prodctQuantityArray[index] = newQuantity;
     setproductsQuantitySelected(prodctQuantityArray);
   };
-
-  useEffect(() => {
-    let totalValue = 0;
-    productsQuantitySelected.find((quantity, index) => {
-      totalValue += quantity * products[index].price;
-    });
-    dispatch(setAmount(totalValue));
-  });
 
   useEffect(() => {
     products.map(() => {

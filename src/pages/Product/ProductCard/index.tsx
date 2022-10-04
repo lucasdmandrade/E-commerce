@@ -7,7 +7,13 @@ import SubtractIcon from "../../../assets/subtractIcon.svg";
 import { currencyBRL } from "../../../utils/CurrencyRegex";
 import { IProducts } from "../populateProducts/types";
 import { ChangeValueButton } from "../../../Components/StyledButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import {
+  selectCount,
+  setAmount,
+} from "../../../features/totalValueCounter/CounterSlice";
+import products from "../populateProducts";
 
 interface IProps {
   product: IProducts;
@@ -28,9 +34,20 @@ const ProductCard = ({
 }: IProps) => {
   const [productQuantity, setProductQuantity] = useState(0);
 
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
+
   React.useEffect(() => {
     updateProductQuantityList(index, productQuantity);
   }, [productQuantity]);
+
+  useEffect(() => {
+    let totalValue = 0;
+    productsQuantitySelected.find((quantity, index) => {
+      totalValue += quantity * products[index].price;
+    });
+    dispatch(setAmount(totalValue));
+  });
 
   return (
     <Grid item xs={6} md={3} lg={3} sm={4}>
