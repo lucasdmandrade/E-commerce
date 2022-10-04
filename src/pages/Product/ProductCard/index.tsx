@@ -6,6 +6,8 @@ import AddIcon from "../../../assets/addIcon.svg";
 import SubtractIcon from "../../../assets/subtractIcon.svg";
 import { currencyBRL } from "../../../utils/CurrencyRegex";
 import { IProducts } from "../populateProducts/types";
+import { hover } from "@testing-library/user-event/dist/hover";
+import { ChangeValueButton } from "../../../Components/StyledButton";
 
 interface IProps {
   product: IProducts;
@@ -56,35 +58,37 @@ const ProductCard = ({
           >
             <Box
               className={styles.paperChangeProductQuantityContainer}
-              sx={{ "& .MuiInputBase-input": { textAlign: "center" } }}
+              sx={{
+                "& .MuiInputBase-root": {
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                },
+                "& .MuiInputBase-input": {
+                  textAlign: "center",
+                },
+              }}
             >
-              <Button
+              <ChangeValueButton
                 onClick={() =>
                   updateProductQuantityList(
                     index,
                     productsQuantitySelected[index] - 1
                   )
                 }
-                style={{
-                  borderRadius: "50%",
-                  width: "30px",
-                  height: "30px",
-                }}
               >
                 <img src={SubtractIcon} alt="Icone para remover produtos" />
-              </Button>
+              </ChangeValueButton>
               <TextField
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
                 value={productsQuantitySelected[index]}
-                sx={{ textAlign: "center" }}
                 onChange={({ target }) =>
                   updateProductQuantityList(index, Number(target.value))
                 }
                 disabled
               />
-              <Button
+              <ChangeValueButton
                 onClick={() =>
                   updateProductQuantityList(
                     index,
@@ -98,7 +102,7 @@ const ProductCard = ({
                 }}
               >
                 <img src={AddIcon} alt="Icone para adicionar produtos" />
-              </Button>
+              </ChangeValueButton>
             </Box>
             <Button
               variant="contained"

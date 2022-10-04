@@ -14,3 +14,13 @@ export const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
     margin: 0,
   },
 }));
+
+export const ChangeValueButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  backgroundColor: "transparent",
+  borderRadius: "100%",
+  minWidth: "30px",
+  minHeight: "30px",
+  "&:hover": {
+    backgroundColor: "#6d5a5a3f",
+  },
+}));
