@@ -25,7 +25,6 @@ const Product = () => {
   const dispatch = useAppDispatch();
 
   const updateActivePaper = (index?: number) => {
-    console.log(index);
     let prodctActiveArray: boolean[] = [];
     products.map(() => prodctActiveArray.push(false));
     if (typeof index !== "undefined") {

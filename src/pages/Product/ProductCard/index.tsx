@@ -7,6 +7,7 @@ import SubtractIcon from "../../../assets/subtractIcon.svg";
 import { currencyBRL } from "../../../utils/CurrencyRegex";
 import { IProducts } from "../populateProducts/types";
 import { ChangeValueButton } from "../../../Components/StyledButton";
+import { useState } from "react";
 
 interface IProps {
   product: IProducts;
@@ -25,6 +26,12 @@ const ProductCard = ({
   updateProductQuantityList,
   productsQuantitySelected,
 }: IProps) => {
+  const [productQuantity, setProductQuantity] = useState(0);
+
+  React.useEffect(() => {
+    updateProductQuantityList(index, productQuantity);
+  }, [productQuantity]);
+
   return (
     <Grid item xs={6} md={3} lg={3} sm={4}>
       <Paper
@@ -73,10 +80,7 @@ const ProductCard = ({
             >
               <ChangeValueButton
                 onClick={() =>
-                  updateProductQuantityList(
-                    index,
-                    productsQuantitySelected[index] - 1
-                  )
+                  setProductQuantity(productsQuantitySelected[index] - 1)
                 }
               >
                 <img src={SubtractIcon} alt="Icone para remover produtos" />
@@ -85,18 +89,14 @@ const ProductCard = ({
                 id="outlined-basic"
                 variant="outlined"
                 size="small"
-                value={productsQuantitySelected[index]}
+                value={productQuantity}
                 onChange={({ target }) =>
-                  updateProductQuantityList(index, Number(target.value))
+                  setProductQuantity(Number(target.value))
                 }
-                disabled
               />
               <ChangeValueButton
                 onClick={() =>
-                  updateProductQuantityList(
-                    index,
-                    productsQuantitySelected[index] + 1
-                  )
+                  setProductQuantity(productsQuantitySelected[index] + 1)
                 }
                 style={{
                   borderRadius: "50%",
