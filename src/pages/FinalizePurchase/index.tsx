@@ -1,4 +1,4 @@
-import { Button, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { useAppSelector } from "../../app/hooks";
 import { selectCount } from "../../features/totalValueCounter/CounterSlice";
 import { currencyBRL } from "../../utils/CurrencyRegex";

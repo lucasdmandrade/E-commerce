@@ -6,7 +6,6 @@ import AddIcon from "../../../assets/addIcon.svg";
 import SubtractIcon from "../../../assets/subtractIcon.svg";
 import { currencyBRL } from "../../../utils/CurrencyRegex";
 import { IProducts } from "../populateProducts/types";
-import { hover } from "@testing-library/user-event/dist/hover";
 import { ChangeValueButton } from "../../../Components/StyledButton";
 
 interface IProps {
